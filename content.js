@@ -107,9 +107,31 @@ class UnAmericaniser {
     }
 
     /**
+     * Check if text has already been processed by looking for conversion patterns
+     */
+    isAlreadyProcessed(text) {
+        // Check for existing conversion patterns to avoid double processing
+        const conversionPatterns = [
+            /\(\d+(?:\.\d+)?\s*°C\)/, // Temperature conversions
+            /\(\d+(?:\.\d+)?\s*km\)/, // Distance conversions  
+            /\(\d+(?:\.\d+)?\s*km\/h\)/, // Speed conversions
+            /\(\d+(?:\.\d+)?\s*kg\)/, // Weight conversions
+            /\(\d{1,2}\s+\w+\s+\d{4}\)/, // Date conversions
+            /\(US\s+\w+.*?\)/ // Brand conversions
+        ];
+
+        return conversionPatterns.some(pattern => pattern.test(text));
+    }
+
+    /**
      * Process text content for conversions
      */
     processText(text) {
+        // Skip if already processed
+        if (this.isAlreadyProcessed(text)) {
+            return text;
+        }
+
         let processedText = text;
 
         // Temperature conversions
@@ -168,11 +190,20 @@ class UnAmericaniser {
      * Process a single text node
      */
     processTextNode(textNode) {
+        // Skip if this node has already been processed
+        if (textNode.parentElement && textNode.parentElement.dataset.unamericanised) {
+            return;
+        }
+
         const originalText = textNode.textContent;
         const processedText = this.processText(originalText);
 
         if (originalText !== processedText) {
             textNode.textContent = processedText;
+            // Mark the parent element as processed to avoid reprocessing
+            if (textNode.parentElement) {
+                textNode.parentElement.dataset.unamericanised = 'true';
+            }
         }
     }
 
@@ -190,6 +221,10 @@ class UnAmericaniser {
             NodeFilter.SHOW_TEXT,
             {
                 acceptNode: (node) => {
+                    // Skip if parent element is already processed or should not be processed
+                    if (node.parentElement && node.parentElement.dataset.unamericanised) {
+                        return NodeFilter.FILTER_REJECT;
+                    }
                     return this.shouldProcessElement(node.parentElement)
                         ? NodeFilter.FILTER_ACCEPT
                         : NodeFilter.FILTER_REJECT;
@@ -231,9 +266,12 @@ class UnAmericaniser {
         const observer = new MutationObserver((mutations) => {
             mutations.forEach((mutation) => {
                 mutation.addedNodes.forEach((node) => {
-                    if (node.nodeType === Node.ELEMENT_NODE) {
+                    // Only process new nodes that haven't been processed yet
+                    if (node.nodeType === Node.ELEMENT_NODE && !node.dataset.unamericanised) {
                         this.processElement(node);
-                    } else if (node.nodeType === Node.TEXT_NODE) {
+                    } else if (node.nodeType === Node.TEXT_NODE &&
+                        node.parentElement &&
+                        !node.parentElement.dataset.unamericanised) {
                         this.processTextNode(node);
                     }
                 });
