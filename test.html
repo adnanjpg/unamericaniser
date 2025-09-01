@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Un-American-iser Test Page</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                max-width: 800px;
+                margin: 0 auto;
+                padding: 20px;
+                line-height: 1.6;
+            }
+            .test-section {
+                background: #f5f5f5;
+                padding: 20px;
+                margin: 20px 0;
+                border-radius: 8px;
+            }
+            .test-section h3 {
+                color: #333;
+                margin-bottom: 15px;
+            }
+            .conversion-example {
+                background: white;
+                padding: 10px;
+                margin: 10px 0;
+                border-left: 4px solid #4caf50;
+            }
+            .dynamic-content {
+                border: 2px dashed #ccc;
+                padding: 15px;
+                margin: 10px 0;
+            }
+            button {
+                background: #4caf50;
+                color: white;
+                border: none;
+                padding: 10px 20px;
+                border-radius: 4px;
+                cursor: pointer;
+            }
+            button:hover {
+                background: #45a049;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>🌍 Un-American-iser Test Page</h1>
+        <p>
+            This page contains various American measurements and terms that
+            should be converted by the extension.
+        </p>
+
+        <div class="test-section">
+            <h3>🌡️ Temperature Conversions</h3>
+            <div class="conversion-example">
+                <p>
+                    Today's weather is 72°F with a high of 85°F and a low of
+                    58°F.
+                </p>
+                <p>The oven should be preheated to 350°F for 25 minutes.</p>
+                <p>Water freezes at 32°F and boils at 212°F.</p>
+            </div>
+        </div>
+
+        <div class="test-section">
+            <h3>📏 Distance Conversions</h3>
+            <div class="conversion-example">
+                <p>The store is 2 miles away from here.</p>
+                <p>We drove 150 miles to get to the beach.</p>
+                <p>The marathon is 26.2 miles long.</p>
+                <p>
+                    I ran 5 miles this morning and walked 1 mile in the evening.
+                </p>
+            </div>
+        </div>
+
+        <div class="test-section">
+            <h3>🏃 Speed Conversions</h3>
+            <div class="conversion-example">
+                <p>The speed limit is 55 mph on this highway.</p>
+                <p>He was driving 80 mph when he got pulled over.</p>
+                <p>The car can go from 0 to 60 mph in 6 seconds.</p>
+            </div>
+        </div>
+
+        <div class="test-section">
+            <h3>⚖️ Weight Conversions</h3>
+            <div class="conversion-example">
+                <p>I weigh 150 lbs and want to lose 10 lbs.</p>
+                <p>The baby was born weighing 7 lbs 8 oz.</p>
+                <p>This bag weighs 50 lbs and that one weighs 25 lbs.</p>
+            </div>
+        </div>
+
+        <div class="test-section">
+            <h3>📅 Date Conversions</h3>
+            <div class="conversion-example">
+                <p>My birthday is on 03/15/1990.</p>
+                <p>The meeting is scheduled for 12/25/2025.</p>
+                <p>
+                    We got married on 06/01/2020 and moved here on 09/15/2021.
+                </p>
+            </div>
+        </div>
+
+        <div class="test-section">
+            <h3>🏢 American Brand Conversions</h3>
+            <div class="conversion-example">
+                <p>I bought a new Apple iPhone from the Apple Store.</p>
+                <p>Let's grab lunch at McDonald's or Burger King.</p>
+                <p>I need to stop by Walmart to pick up some Nike shoes.</p>
+                <p>Want to get Starbucks coffee or a Subway sandwich?</p>
+                <p>
+                    I prefer Coca-Cola over Pepsi, and KFC over other fast food.
+                </p>
+            </div>
+        </div>
+
+        <div class="test-section">
+            <h3>🔄 Mixed Conversions</h3>
+            <div class="conversion-example">
+                <p>
+                    On 07/04/2025, we drove 100 miles at 65 mph to a place where
+                    it was 90°F. I bought a 2 lbs bag of coffee from Starbucks.
+                </p>
+                <p>
+                    The Apple store is 5 miles away. It was 75°F when I walked
+                    there weighing 160 lbs on 01/01/2025.
+                </p>
+            </div>
+        </div>
+
+        <div class="test-section">
+            <h3>➕ Dynamic Content Test</h3>
+            <div class="dynamic-content" id="dynamic-area">
+                <p>This area will have content added dynamically...</p>
+            </div>
+            <button onclick="addDynamicContent()">Add Dynamic Content</button>
+            <button onclick="clearDynamicContent()">Clear Content</button>
+        </div>
+
+        <div class="test-section">
+            <h3>❌ Should NOT Convert</h3>
+            <div class="conversion-example">
+                <p>These should remain unchanged:</p>
+                <ul>
+                    <li>Phone numbers: Call me at 555-123-4567</li>
+                    <li>Codes: Product code F150-XLT</li>
+                    <li>URLs: https://example.com/path?temp=75F</li>
+                    <li>Email addresses: user@example.com</li>
+                </ul>
+                <input
+                    type="text"
+                    placeholder="Input fields like 75°F should not convert"
+                    style="width: 300px; padding: 5px"
+                />
+                <br /><br />
+                <textarea
+                    placeholder="Textarea content like 10 miles should not convert"
+                    style="width: 300px; height: 60px; padding: 5px"
+                ></textarea>
+            </div>
+        </div>
+
+        <script>
+            let dynamicCounter = 1;
+
+            function addDynamicContent() {
+                const area = document.getElementById('dynamic-area');
+                const newContent = document.createElement('p');
+
+                const examples = [
+                    `Dynamic content ${dynamicCounter}: Temperature is 68°F today.`,
+                    `Dynamic content ${dynamicCounter}: Distance to downtown is 3 miles.`,
+                    `Dynamic content ${dynamicCounter}: Speed limit here is 45 mph.`,
+                    `Dynamic content ${dynamicCounter}: Package weighs 5 lbs.`,
+                    `Dynamic content ${dynamicCounter}: Meeting on 08/15/2025.`,
+                    `Dynamic content ${dynamicCounter}: Getting coffee at Starbucks.`,
+                ];
+
+                newContent.innerHTML =
+                    examples[dynamicCounter % examples.length];
+                area.appendChild(newContent);
+                dynamicCounter++;
+            }
+
+            function clearDynamicContent() {
+                const area = document.getElementById('dynamic-area');
+                area.innerHTML =
+                    '<p>This area will have content added dynamically...</p>';
+                dynamicCounter = 1;
+            }
+        </script>
+    </body>
+</html>

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Un-American-iser Options</title>
+        <link rel="stylesheet" href="options.css" />
+    </head>
+    <body>
+        <div class="container">
+            <header>
+                <h1>🌍 Un-American-iser Settings</h1>
+                <p>Choose which conversions to enable on webpages</p>
+            </header>
+
+            <main>
+                <div class="settings-section">
+                    <h2>Measurement Conversions</h2>
+
+                    <div class="setting-item">
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="temperature" checked />
+                            <span class="slider"></span>
+                        </label>
+                        <div class="setting-info">
+                            <h3>Temperature</h3>
+                            <p>
+                                Convert Fahrenheit to Celsius (e.g., 70°F → 70°F
+                                (21°C))
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="setting-item">
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="distance" checked />
+                            <span class="slider"></span>
+                        </label>
+                        <div class="setting-info">
+                            <h3>Distance</h3>
+                            <p>
+                                Convert miles to kilometers (e.g., 5 miles → 5
+                                miles (8 km))
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="setting-item">
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="speed" checked />
+                            <span class="slider"></span>
+                        </label>
+                        <div class="setting-info">
+                            <h3>Speed</h3>
+                            <p>
+                                Convert mph to km/h (e.g., 60 mph → 60 mph (96
+                                km/h))
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="setting-item">
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="weight" checked />
+                            <span class="slider"></span>
+                        </label>
+                        <div class="setting-info">
+                            <h3>Weight</h3>
+                            <p>
+                                Convert pounds to kilograms (e.g., 150 lbs → 150
+                                lbs (68 kg))
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="settings-section">
+                    <h2>Format Conversions</h2>
+
+                    <div class="setting-item">
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="dates" checked />
+                            <span class="slider"></span>
+                        </label>
+                        <div class="setting-info">
+                            <h3>Dates</h3>
+                            <p>
+                                Convert MM/DD/YYYY to international format
+                                (e.g., 03/01/2025 → 03/01/2025 (1 March 2025))
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="setting-item">
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="brands" checked />
+                            <span class="slider"></span>
+                        </label>
+                        <div class="setting-info">
+                            <h3>American Brands</h3>
+                            <p>
+                                Add context to American brands (e.g., Apple →
+                                Apple (US tech company))
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="action-buttons">
+                    <button id="save-btn" class="btn-primary">
+                        Save Settings
+                    </button>
+                    <button id="reset-btn" class="btn-secondary">
+                        Reset to Defaults
+                    </button>
+                </div>
+
+                <div id="status-message" class="status-message"></div>
+            </main>
+
+            <footer>
+                <p>
+                    Un-American-iser v1.0.0 - Making the web more international,
+                    one conversion at a time! 🌎
+                </p>
+            </footer>
+        </div>
+
+        <script src="options.js"></script>
+    </body>
+</html>

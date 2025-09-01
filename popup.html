@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Un-American-iser</title>
+        <link rel="stylesheet" href="popup.css" />
+    </head>
+    <body>
+        <div class="popup-container">
+            <header>
+                <h1>🌍 Un-American-iser</h1>
+                <p>International conversions for American measurements</p>
+            </header>
+
+            <main>
+                <div class="status-section">
+                    <div class="status-indicator">
+                        <div id="status-dot" class="status-dot active"></div>
+                        <span id="status-text">Active on this page</span>
+                    </div>
+                </div>
+
+                <div class="quick-toggles">
+                    <h3>Quick Toggles</h3>
+                    <div class="toggle-grid">
+                        <label class="mini-toggle">
+                            <input type="checkbox" id="popup-temperature" />
+                            <span class="mini-slider"></span>
+                            <span class="toggle-label">Temp</span>
+                        </label>
+
+                        <label class="mini-toggle">
+                            <input type="checkbox" id="popup-distance" />
+                            <span class="mini-slider"></span>
+                            <span class="toggle-label">Distance</span>
+                        </label>
+
+                        <label class="mini-toggle">
+                            <input type="checkbox" id="popup-speed" />
+                            <span class="mini-slider"></span>
+                            <span class="toggle-label">Speed</span>
+                        </label>
+
+                        <label class="mini-toggle">
+                            <input type="checkbox" id="popup-weight" />
+                            <span class="mini-slider"></span>
+                            <span class="toggle-label">Weight</span>
+                        </label>
+
+                        <label class="mini-toggle">
+                            <input type="checkbox" id="popup-dates" />
+                            <span class="mini-slider"></span>
+                            <span class="toggle-label">Dates</span>
+                        </label>
+
+                        <label class="mini-toggle">
+                            <input type="checkbox" id="popup-brands" />
+                            <span class="mini-slider"></span>
+                            <span class="toggle-label">Brands</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="action-buttons">
+                    <button id="refresh-page" class="btn-secondary">
+                        Refresh Page
+                    </button>
+                    <button id="open-options" class="btn-primary">
+                        Full Settings
+                    </button>
+                </div>
+            </main>
+
+            <footer>
+                <p>v1.0.0</p>
+            </footer>
+        </div>
+
+        <script src="popup.js"></script>
+    </body>
+</html>
